@@ -1,4 +1,9 @@
-# marvel
+# marvel project
+
+## Clone project
+```
+git clone https://github.com/silouuu/marvel-project.git
+```
 
 ## Project setup
 ```
