@@ -1,0 +1,19 @@
+@mixin transition($element:all, $time:0.2s ){
+    transition: $element $time ease-in-out;
+}
+
+@mixin animation {
+    border-left: 2px solid $jaune;
+    background-color: $coul_anim;
+    padding-left: 10px;
+}
+
+@mixin background($imgpath,$size:cover,$position:center,$repeat: no-repeat) {
+    background: {
+        image: url($imgpath);
+        size: $size;
+        position: $position;
+        repeat: $repeat;
+    }
+}
+// @include background('../img.png', , , )
