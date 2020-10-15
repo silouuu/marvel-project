@@ -1,5 +1,5 @@
 <template>
-  <a class="btn" href="{{ href }}">{{ msg }}</a>
+  <span class="btn">{{ msg }}</span>
 </template>
 
 <script>
@@ -7,10 +7,10 @@ export default {
   name: 'Button',
   props: {
     msg: String,
+    active: Boolean,
     level: {
       type: Number,
     },
-    href: String,
   },
   // TO DO fct class suivant level ?
 };

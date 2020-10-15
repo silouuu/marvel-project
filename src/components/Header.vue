@@ -27,7 +27,7 @@
         display: flex;
         max-width: $laptop;
         margin: auto;
-        padding: 10px;
+        padding: 15px;
         .logo{
             max-width: 100px;
             margin-right: 80px;
