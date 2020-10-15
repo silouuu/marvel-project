@@ -1,7 +1,7 @@
 <template>
   <div class="characterItem">
     <img src="" alt="">
-    <h4>Name Character</h4>
+    <h4>Name Character {{ }}</h4>
   </div>
 </template>
 
