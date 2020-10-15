@@ -1,12 +1,12 @@
 <template >
   <div class="section flex flex-col justify-center items-center">
     <h1 class="section-title">Perfectly Balanced,<span> as all things should be</span></h1>
-    <Button msg="discover" />
+    <Button msg="discover" styleAppButton="primary"/>
   </div>
 </template>
 
 <script>
-import Button from '@/components/atoms/Button.vue';
+import Button from '@/components/commons/AppButton.vue';
 
 export default {
   name: 'Visuel',

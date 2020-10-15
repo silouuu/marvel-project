@@ -1,17 +1,16 @@
 <template>
   <div class="filters">
     <h3>Filter by teams & groups</h3>
-    <ul>
+    <ul class="filters-wrapper flex p-5">
       <li v-for="filter in filters" :key="filter.name">
-        <Button :msg="filter.name"/>
+        <Button :msg="filter.name" styleAppButton="primary"/>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import Button from '@/components/atoms/Button.vue';
+import Button from '@/components/commons/AppButton.vue';
 
 export default {
   name: 'Filters',
@@ -30,3 +29,7 @@ export default {
 };
 
 </script>
+<style  scoped lang="scss">
+.filters-wrapper{
+}
+</style>
