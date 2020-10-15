@@ -1,11 +1,14 @@
 <template>
   <div class="filters">
-    <h3>Filter by teams & groups</h3>
-    <ul class="filters-wrapper flex p-5">
-      <li v-for="filter in filters" :key="filter.name">
-        <Button :msg="filter.name" styleAppButton="primary"/>
-      </li>
-    </ul>
+    <p class="filtersTitle flex">Filter by teams & groups</p>
+    <div class="flex-1">
+      <ul class="filters-wrapper flex p-5">
+        <li v-for="filter in filters" :key="filter.name">
+          <Button :msg="filter.name" styleAppButton="primary"/>
+        </li>
+      </ul>
+    </div>
+
   </div>
 </template>
 
@@ -30,6 +33,18 @@ export default {
 
 </script>
 <style  scoped lang="scss">
-.filters-wrapper{
+@import '@/assets/sass/_variables.scss';
+@import '@/assets/sass/_generic.scss';
+
+.filtersTitle {
+  display: flex;
+  align-content: flex-start;
+  text-align: left;
+  font: italic normal normal 14px/17px Roboto;
+  letter-spacing: 0px;
+  color: #FFFFFF;
+  text-transform: uppercase;
+  opacity: 1;
 }
+
 </style>
