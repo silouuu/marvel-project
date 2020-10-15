@@ -6,7 +6,7 @@
     <section id="charaters" class="flex flex-col items-center">
       <h2 class="h2Primary">Personnages</h2>
       <CharacterFilters/>
-      <CharacterList/>
+      <CharacterList limit=16 />
     </section>
   </div>
 </template>

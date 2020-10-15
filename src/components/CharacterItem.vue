@@ -2,12 +2,13 @@
   <div class="characterItem">
     <div class="heroImageCharacterList">
       <div class="blocImageCharacterList">
-        <a class="linkImageCharacterList" href="https://terrigen-cdn-dev.marvel.com/content/prod/1x/008cmv_ons_crd_04.jpg">
-          <img class="ImageCharacterList" src="https://terrigen-cdn-dev.marvel.com/content/prod/1x/008cmv_ons_crd_04.jpg" alt="">
+        <a class="linkImageCharacterList" href="">
+          <img class="ImageCharacterList"
+          v-bind:src="imgCharacter.path + '.' + imgCharacter.extension" alt="">
         </a>
       </div>
     </div>
-    <h4 class="titleImageCharacterList">{{ nameCharacter }}</h4>
+    <h4 class="titleImageCharacterList">{{nameCharacter}}</h4>
   </div>
 </template>
 
@@ -17,12 +18,25 @@
 export default {
   name: 'CharacterItem',
   props: {
-    CharacterId: Number,
+    characterId: {
+      type: Number,
+      default: 0,
+    },
+    nameCharacter: String,
+    imgCharacter: {
+      type: Object,
+      default: function u() {
+        return {
+          extention: 'jpg',
+          path: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/008cmv_ons_crd_04',
+        };
+      },
+    },
   },
   data() {
     return {
-      nameCharacter: 'Captain Marvel',
-      imageCharacter: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/008cmv_ons_crd_04.jpg',
+      // nameCharacter: 'Captain Marvel',
+      // imageCharacter: 'https://terrigen-cdn-dev.marvel.com/content/prod/1x/008cmv_ons_crd_04.jpg',
 
     };
   },
@@ -79,7 +93,7 @@ export default {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
-  color: #212529;
+  color: white;
   padding: .25em .5em;
   margin-left: -17%;
   border-radius: .3em;

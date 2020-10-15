@@ -1,8 +1,9 @@
 <template>
   <div>
-    <ul>
-      <li v-for="character in characters" v-bind:key="character.id" :CharacterId="character.id">
-        <CharacterItem />
+    <ul class="wrapperCharacters">
+      <li v-for="character in characters" v-bind:key="character.id">
+        <CharacterItem :imgCharacter="character.thumbnail"
+        :nameCharacter="character.name" />
       </li>
     </ul>
   </div>
@@ -19,6 +20,9 @@ export default {
   components: {
     CharacterItem,
   },
+  props: {
+    limit: Number,
+  },
   data() {
     return {
       dataAPI: Object,
@@ -26,14 +30,13 @@ export default {
     };
   },
   beforeMount() {
-    this.getCharacters();
+    this.getCharacters(this.limit);
   },
   methods: {
-    async getCharacters() {
-      const aa = api.getUrlApi('https://gateway.marvel.com/v1/public/characters');
-      console.log(aa);
+    async getCharacters(limit) {
+      const apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/characters?limit=${limit}`);
 
-      const { data } = await axios.get(aa);
+      const { data } = await axios.get(apiUrl);
       this.characters = data.data.results;
       console.log(this.characters);
     },
@@ -41,5 +44,8 @@ export default {
 };
 </script>
 <style  scoped lang="scss">
-
+.wrapperCharacters{
+  display: flex;
+  flex-wrap: wrap;
+}
 </style>

@@ -1,5 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../views/Home.vue';
+import Characters from '../views/Characters.vue';
+import Character from '../views/Character.vue';
 
 const routes = [
   {
@@ -10,11 +12,20 @@ const routes = [
   {
     path: '/characters',
     name: 'Characters',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Characters.vue'),
+    component: Characters,
   },
+  {
+    path: '/character/:id',
+    name: 'Character',
+    component: Character,
+    props: true,
+  },
+  // {
+  //   path: '/search',
+  //   component: SearchUser,
+  //   props: (route) => ({ query: route.query.q })
+  // }
+  // L'URL /search?q=vue passerait {query: 'vue'} comme props au composant SearchUser
 ];
 
 const router = createRouter({

@@ -1,6 +1,8 @@
 <template>
-  <Header />
-  <router-view/>
+  <div class="wrapper-view">
+    <Header />
+    <router-view/>
+  </div>
 </template>
 
 <script>
@@ -15,5 +17,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+.wrapper-view{
+  padding-top: 100px;
+}
 </style>
