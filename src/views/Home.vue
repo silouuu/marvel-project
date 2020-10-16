@@ -8,6 +8,10 @@
       <CharacterFilters/>
       <CharacterList limit=16 />
     </section>
+    <section id="comics" class="flex flex-col items-center">
+      <h2 class="h2Secondary">Comics</h2>
+      <ComicsList limit=16 />
+    </section>
   </div>
 </template>
 
@@ -15,6 +19,8 @@
 import WelcomeSection from '@/components/WelcomeSection.vue';
 import CharacterFilters from '@/components/CharacterFilters.vue';
 import CharacterList from '@/components/CharacterList.vue';
+import ComicsList from '@/components/ComicsList.vue';
+
 // import axios from "axios";
 
 export default {
@@ -23,6 +29,7 @@ export default {
     WelcomeSection,
     CharacterFilters,
     CharacterList,
+    ComicsList,
   },
 };
 </script>
