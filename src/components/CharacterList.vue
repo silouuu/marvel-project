@@ -2,8 +2,10 @@
   <div>
     <ul class="wrapperCharacters">
       <li v-for="character in characters" v-bind:key="character.id">
-        <CharacterItem :imgCharacter="character.thumbnail"
-        :nameCharacter="character.name" />
+        <router-link class="nav-item" :to="'/character/'+character.id">
+          <CharacterItem :imgCharacter="character.thumbnail"
+          :nameCharacter="character.name" />
+        </router-link>
       </li>
     </ul>
   </div>

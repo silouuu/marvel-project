@@ -18,6 +18,6 @@ export default {
 
 <style lang="scss">
 .wrapper-view{
-  padding-top: 100px;
+  padding-top: 70px;
 }
 </style>

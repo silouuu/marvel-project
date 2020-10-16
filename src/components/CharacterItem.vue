@@ -2,10 +2,8 @@
   <div class="characterItem">
     <div class="heroImageCharacterList">
       <div class="blocImageCharacterList">
-        <a class="linkImageCharacterList" href="">
-          <img class="ImageCharacterList"
-          v-bind:src="imgCharacter.path + '.' + imgCharacter.extension" alt="">
-        </a>
+        <img class="ImageCharacterList"
+        v-bind:src="imgCharacter.path + '.' + imgCharacter.extension" alt="">
       </div>
     </div>
     <h4 class="titleImageCharacterList">{{nameCharacter}}</h4>
