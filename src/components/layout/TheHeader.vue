@@ -4,10 +4,8 @@
             <router-link class="nav-item" to="/">
                 <img class="logo" src="@/assets/img/marvel-logo.svg" alt="Marvel Logo">
             </router-link>
-            <router-link class="nav-item" to="/characters">Characters</router-link>
-            <router-link class="nav-item" to="/comics">Comics</router-link>
-            <router-link class="nav-item" to="/stories">Stories</router-link>
-            <router-link class="nav-item" to="/creators">Creators</router-link>
+            <router-link class="nav-item" :to="{name: 'Characters'}">Characters</router-link>
+            <router-link class="nav-item" :to="{name: 'Comics'}">Comics</router-link>
         </div>
     </div>
 </template>

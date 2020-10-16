@@ -1,8 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
-import Home from '../views/Home.vue';
-import Characters from '../views/Characters.vue';
-import Character from '../views/Character.vue';
-import PageNotFound from '../views/PageNotFound.vue';
+import Home from '@/views/Home.vue';
+import Characters from '@/views/Characters.vue';
+import Character from '@/views/Character.vue';
+import Comics from '@/views/Comics.vue';
+import PageNotFound from '@/views/PageNotFound.vue';
 
 const routes = [
   {
@@ -19,6 +20,12 @@ const routes = [
     path: '/character/:id',
     name: 'Character',
     component: Character,
+    props: true,
+  },
+  {
+    path: '/comics',
+    name: 'Comics',
+    component: Comics,
     props: true,
   },
   {

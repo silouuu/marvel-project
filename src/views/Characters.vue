@@ -1,6 +1,9 @@
 <template>
   <div class="about">
     <h1>All my characters</h1>
+    <form action="">
+      <input type="text">
+    </form>
     <Filters />
     <CharacterList limit=40 />
   </div>

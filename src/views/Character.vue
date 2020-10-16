@@ -1,10 +1,17 @@
 <template>
   <div class="characterSingle">
     <div v-if="!isError" >
-      <h1>{{ name }}</h1>
-      <p>{{ description }}</p>
-      <img class="ImageCharacterList"
-        :src="thumbnail.path + '.' + thumbnail.extension" alt="">
+      <section class="characterPresentation">
+        <h1>{{ name }}</h1>
+        <p>{{ description }}</p>
+        <img class="ImageCharacterList"
+          :src="thumbnail.path + '.' + thumbnail.extension" alt="">
+      </section>
+      <section class="characterComicsLinked">
+        <div >
+          <ComicsLinked :characterId="id"/>
+        </div>
+      </section>
     </div>
     <div v-else>
       <NoCharacter />
@@ -14,6 +21,7 @@
 
 <script>
 import NoCharacter from '@/components/NoCharacter.vue';
+import ComicsLinked from '@/components/ComicsLinked.vue';
 
 import api from '../api';
 
@@ -26,6 +34,7 @@ export default {
   },
   components: {
     NoCharacter,
+    ComicsLinked,
   },
   data() {
     return {
@@ -35,6 +44,7 @@ export default {
         extension: String,
         path: String,
       },
+      comicsLinked: Object,
       isError: false,
     };
   },
