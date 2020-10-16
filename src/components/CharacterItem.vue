@@ -3,7 +3,7 @@
     <div class="heroImageCharacterList">
       <div class="blocImageCharacterList">
         <img class="ImageCharacterList"
-        v-bind:src="imgCharacter.path + '.' + imgCharacter.extension" alt="">
+          v-bind:src="imgCharacter.path + '.' + imgCharacter.extension" alt="{{nameCharacter}}">
       </div>
     </div>
     <h4 class="titleImageCharacterList">{{nameCharacter}}</h4>
@@ -11,8 +11,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
 export default {
   name: 'CharacterItem',
   props: {

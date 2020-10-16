@@ -1,13 +1,20 @@
 <template>
   <div class="characterSingle">
-    <h1>{{ name }}</h1>
-    <p>{{ description }}</p>
-    <img class="ImageCharacterList"
-      v-bind:src="thumbnail.path + '.' + thumbnail.extension" alt="">
+    <div v-if="!isError" >
+      <h1>{{ name }}</h1>
+      <p>{{ description }}</p>
+      <img class="ImageCharacterList"
+        :src="thumbnail.path + '.' + thumbnail.extension" alt="">
+    </div>
+    <div v-else>
+      <NoCharacter />
+    </div>
   </div>
 </template>
 
 <script>
+import NoCharacter from '@/components/NoCharacter.vue';
+
 import api from '../api';
 
 const axios = require('axios');
@@ -17,6 +24,9 @@ export default {
   props: {
     id: String,
   },
+  components: {
+    NoCharacter,
+  },
   data() {
     return {
       name: String,
@@ -25,6 +35,7 @@ export default {
         extension: String,
         path: String,
       },
+      isError: false,
     };
   },
   beforeMount() {
@@ -34,15 +45,23 @@ export default {
     async getCharacter(id) {
       const apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/characters/${id}`);
 
-      const { data } = await axios.get(apiUrl);
-      console.log(data.data.results);
-      this.name = data.data.results[0].name;
-      this.thumbnail.extension = data.data.results[0].thumbnail.extension;
-      this.thumbnail.path = data.data.results[0].thumbnail.path;
-      if (data.data.results[0].description !== '') {
-        this.description = data.data.results[0].description;
-      }
-      console.log(this.thumbnail.path);
+      axios({
+        method: 'GET',
+        url: apiUrl,
+        headers: {},
+      }).then((result) => {
+        console.log(result);
+        this.name = result.data.data.results[0].name;
+        this.thumbnail.extension = result.data.data.results[0].thumbnail.extension;
+        this.thumbnail.path = result.data.data.results[0].thumbnail.path;
+        if (result.data.data.results[0].description !== '') {
+          this.description = result.data.data.results[0].description;
+        }
+      }, (error) => {
+        console.log('error');
+        this.isError = true;
+        console.log(error);
+      });
     },
   },
 };

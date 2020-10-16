@@ -22,9 +22,13 @@ const routes = [
     props: true,
   },
   {
+    path: '/404',
+    component: PageNotFound,
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'PageNotFound',
-    component: PageNotFound,
+    redirect: '/404',
   },
 ];
 

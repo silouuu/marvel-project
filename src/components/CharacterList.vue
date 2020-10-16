@@ -1,8 +1,8 @@
 <template>
   <div>
     <ul class="wrapperCharacters">
-      <li v-for="character in characters" v-bind:key="character.id">
-        <router-link class="nav-item" :to="'/character/'+character.id">
+      <li v-for="character in characters" :key="character.id">
+        <router-link class="nav-item" :to="{name:'Character', params: {id: character.id}}">
           <CharacterItem :imgCharacter="character.thumbnail"
           :nameCharacter="character.name" />
         </router-link>
