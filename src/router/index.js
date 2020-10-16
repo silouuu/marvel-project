@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Characters from '../views/Characters.vue';
 import Character from '../views/Character.vue';
+import PageNotFound from '../views/PageNotFound.vue';
 
 const routes = [
   {
@@ -20,12 +21,11 @@ const routes = [
     component: Character,
     props: true,
   },
-  // {
-  //   path: '/search',
-  //   component: SearchUser,
-  //   props: (route) => ({ query: route.query.q })
-  // }
-  // L'URL /search?q=vue passerait {query: 'vue'} comme props au composant SearchUser
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'PageNotFound',
+    component: PageNotFound,
+  },
 ];
 
 const router = createRouter({
