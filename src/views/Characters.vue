@@ -2,10 +2,11 @@
   <div class="about">
     <h1>All my characters</h1>
     <form action="">
-      <input type="text">
+      <input v-model="message" @input="filterCharacters" placeholder="modifiez-moi">
+      <p>Le message est : {{ message }}</p>
     </form>
     <Filters />
-    <CharacterList limit=40 />
+    <CharacterList limit="40" :search="message"/>
   </div>
 </template>
 <script>
@@ -23,10 +24,15 @@ export default {
   },
   data() {
     return {
-
+      searchText: String,
+      message: '',
     };
   },
-
+  methods: {
+    filterCharacters() {
+      console.log(this.message);
+    },
+  },
 };
 
 </script>
@@ -35,4 +41,10 @@ export default {
 @import '@/assets/sass/_variables.scss';
 @import '@/assets/sass/_generic.scss';
 
+form{
+  padding: 4em;
+  input{
+    border: 1px solid black;
+  }
+}
 </style>

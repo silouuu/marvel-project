@@ -23,7 +23,8 @@ export default {
     CharacterItem,
   },
   props: {
-    limit: Number,
+    limit: String,
+    search: String,
   },
   data() {
     return {
@@ -31,12 +32,27 @@ export default {
     };
   },
   beforeMount() {
-    this.getCharacters(this.limit);
+    this.getCharacters(this.limit, '');
+  },
+  watch: {
+    search: {
+      immediate: true,
+      handler(val) {
+        this.getCharacters(this.limit, val);
+      },
+    },
   },
   methods: {
-    async getCharacters(limit) {
-      const apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/characters?limit=${limit}`);
-
+    async getCharacters(limit, searchInput) {
+      console.log('--', this.search);
+      let apiUrl = '';
+      if (searchInput) {
+        apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/characters?limit=${limit}&nameStartsWith=${searchInput}`, true);
+      } else {
+        apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/characters?limit=${limit}`, true);
+      }
+      console.log(apiUrl);
+      console.log(searchInput);
       const { data } = await axios.get(apiUrl);
       this.characters = data.data.results;
       console.log(this.characters);

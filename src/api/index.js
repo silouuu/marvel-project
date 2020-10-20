@@ -26,12 +26,19 @@ const api = {
     //     })
     // }, 3000)
   },
-  getUrlApi(url) {
+  getUrlApi(url, param = false) {
     const privateKey = process.env.VUE_APP_PRIVATEKEY;
     const publicKey = process.env.VUE_APP_PUBLICKEY;
     const timestamp = Math.round(+new Date() / 1000);
     const hash = md5(timestamp + privateKey + publicKey);
-    return `${url}?ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
+    let urlAPI = '';
+    console.log(param);
+    if (param) {
+      urlAPI = `${url}&ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
+    } else {
+      urlAPI = `${url}?ts=${timestamp}&apikey=${publicKey}&hash=${hash}`;
+    }
+    return urlAPI;
   },
 };
 export default reactive(api);
