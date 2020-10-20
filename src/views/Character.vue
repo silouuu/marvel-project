@@ -2,10 +2,14 @@
   <div class="characterSingle">
     <div v-if="!isError" >
       <section class="characterPresentation">
-        <h1>{{ name }}</h1>
-        <p>{{ description }}</p>
-        <img class="ImageCharacterList"
-          :src="thumbnail.path + '.' + thumbnail.extension" alt="">
+        <div class="imgWrapper">
+          <img class="ImageCharacterList"
+          :src="thumbnail.path + '.' + thumbnail.extension" alt="{{ name }}">
+        </div>
+        <div class="contentWrapper">
+          <h1 class="title">{{ name }}</h1>
+          <p class="description">{{ description }}</p>
+        </div>
       </section>
       <section class="characterComicsLinked">
         <div >
@@ -81,5 +85,43 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/sass/_variables.scss';
 @import '@/assets/sass/_generic.scss';
+
+.characterSingle{
+  background-color: $purple;
+}
+.characterPresentation{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5em;
+  .imgWrapper{
+    max-width: 50vw;
+  }
+  .contentWrapper{
+    border: 3px solid $lightpurple;
+    background-color: #161125;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    margin: 2em 2em 2em -3em;
+    box-shadow: 0px 0px 20px 8px #00000040;
+    .title{
+      text-transform: uppercase;
+      color: $lightpurple;
+      font-family: $roboto;
+      font-weight: 700;
+      font-size: 25px;
+      line-height: 1;
+      margin-bottom: 1em;
+    }
+    .description{
+
+    }
+  }
+}
 
 </style>

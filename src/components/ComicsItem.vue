@@ -59,11 +59,10 @@ export default {
 }
 
 .heroImageComicsList:hover {
-  -ms-transform: scale(1.5); /* IE 9 */
-  -webkit-transform: scale(1.5); /* Safari 3-8 */
-  transform: scale(1.5);
-  transition-duration: 300ms;
-  transition-property: fill,color;
+  .ImageCharacterList {
+    width: 130%;
+    height: 130%;
+  }
 }
 
 .ImageComicsList {
@@ -74,6 +73,7 @@ export default {
   position: relative;
   -webkit-transform: skew(-25rad) translateX(-5px);
   transform: skew(-25rad) translateX(-1px);
+  transition: all 0.3s ease-in-out;
 }
 
 .linkImageComicsList {
@@ -84,16 +84,16 @@ export default {
 
 .titleImageComicsList {
   display: inline-block;
-  font-family: Roboto,Helvetica Neue,Arial,sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
+  width: 100%;
   color: white;
-  padding: .25em .5em;
+  padding: 1em 0.5em;
   margin-left: -17%;
   border-radius: .3em;
   font-size: 1rem;
   line-height: 1.25em;
   text-transform: uppercase;
+  overflow-wrap: break-word;
+  font-family: Roboto;
+  font-weight: 400;
 }
 </style>

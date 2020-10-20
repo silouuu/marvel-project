@@ -1,9 +1,11 @@
 <template>
   <div class="ComicsLinkedWrapper">
-    <h2>Comics associés</h2>
-    <ul>
-      <li v-for="item in comics" :key="item.id">
-        <ComicsItem :comicsId="item.id" :titleComics="item.title" :imgComics="item.thumbnail"/>
+    <h2 class="title">Comics associés</h2>
+    <ul class="wrapperComics">
+      <li class="itemComics" v-for="item in comics" :key="item.id">
+        <router-link class="nav-item" :to="'/comics/'+item.id">
+          <ComicsItem :comicsId="item.id" :titleComics="item.title" :imgComics="item.thumbnail"/>
+        </router-link>
       </li>
     </ul>
   </div>
@@ -37,7 +39,6 @@ export default {
   methods: {
     async getComicsLinked(characterId) {
       const apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/characters/${characterId}/comics?limit=4`);
-      console.log(apiUrl);
 
       axios({
         method: 'GET',
@@ -45,8 +46,6 @@ export default {
         headers: {},
       }).then((result) => {
         this.comics = result.data.data.results;
-        console.log('this.comics');
-        console.log(this.comics);
       }, (error) => {
         console.log('error');
         console.log(error);
@@ -60,5 +59,17 @@ export default {
 <style scoped lang="scss">
 @import '@/assets/sass/_variables.scss';
 @import '@/assets/sass/_generic.scss';
+
+.wrapperComics{
+  display: flex;
+  justify-content: center;
+  padding: 2em 0;
+  .itemComics{
+    max-width: 30%;
+  }
+}
+.title{
+  color: white;
+}
 
 </style>
