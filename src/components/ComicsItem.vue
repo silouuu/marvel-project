@@ -44,18 +44,18 @@ export default {
 @import '@/assets/sass/_variables.scss';
 @import '@/assets/sass/_generic.scss';
 
+.comicsItem{
+  width: 155px;
+  margin-bottom: 1em;
+}
 .blocImageComicsList {
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  width: 105px;
-  height: 97px;
-  border: 3px solid #f6f6f6;
-  overflow: hidden;
-  border-radius: 7px;
-  -webkit-transform: skew(25rad);
-  transform: skew(25rad);
+  width: 120px;
+  min-height: 220px;
+  height: auto;
 }
 
 .heroImageComicsList:hover {
@@ -66,14 +66,8 @@ export default {
 }
 
 .ImageComicsList {
-  width: 120%;
-  height: 120%;
-  background-size: 100%;
-  background-position: center;
-  position: relative;
-  -webkit-transform: skew(-25rad) translateX(-5px);
-  transform: skew(-25rad) translateX(-1px);
-  transition: all 0.3s ease-in-out;
+  width: 100%;
+  height: autp;
 }
 
 .linkImageComicsList {

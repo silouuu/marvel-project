@@ -9,7 +9,7 @@
       <CharacterList limit=16 />
     </section>
     <section id="comics" class="flex flex-col items-center">
-      <h2 class="h2Secondary">Comics</h2>
+      <h2 class="h2Primary">Comics</h2>
       <ComicsList limit=16 />
     </section>
   </div>
@@ -41,7 +41,7 @@ export default {
   background-color: #1D1630 !important;
 }
 
-#charaters{
+#charaters, #comics{
   padding: 5em;
 }
 .h2Primary {

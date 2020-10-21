@@ -1,24 +1,23 @@
 <template>
-  <div class="comics">
-    <h1 class="title">All comics</h1>
-    <ComicsList class="comics-list" limit=40 />
+  <div class="noComics">
+    <h1 class="title">Oops aucun comics ne correspond...</h1>
+    <router-link :to="{name:'Comics'}">
+      <AppButton msg="All comics" />
+    </router-link>
   </div>
 </template>
+
 <script>
-import ComicsList from '@/components/ComicsList.vue';
+import AppButton from '@/components/commons/AppButton.vue';
 
 export default {
-  name: 'Comics',
+  name: 'NoComic',
   components: {
-    ComicsList,
+    AppButton,
   },
   props: {
-
   },
   data() {
-    return {
-
-    };
   },
 };
 
@@ -28,8 +27,12 @@ export default {
 @import '@/assets/sass/_variables.scss';
 @import '@/assets/sass/_generic.scss';
 
-.comics{
-  background-color: $purple;
+.noComics{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   color: white;
   .title{
     font-family: Roboto !important;
@@ -42,9 +45,4 @@ export default {
     font-weight: 500;
   }
 }
-.comics-list{
-  max-width: 800px;
-  margin: auto;
-}
-
 </style>

@@ -21,6 +21,7 @@
     background-color: $purple;
     color: white;
     box-shadow: 0px 4px 10px $navy;
+    z-index: 50;
     #nav{
         display: flex;
         max-width: $laptop;

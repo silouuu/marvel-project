@@ -64,6 +64,7 @@ export default {
   display: flex;
   max-width: 500px;
   margin: auto;
+  margin-bottom: 2em;
   text-align: center;
   justify-content: center;
   text-transform: uppercase;

@@ -1,25 +1,21 @@
 <template>
-  <div class="characterSingle">
+  <div class="comicSingle">
     <template v-if="!isLoading">
       <div v-if="!isError" >
-        <section class="characterPresentation">
+        <section class="comicPresentation">
           <div class="imgWrapper">
             <img class="ImageCharacterList"
-            :src="thumbnail.path + '.' + thumbnail.extension" alt="{{ name }}">
+            :src="thumbnail.path + '.' + thumbnail.extension" alt="{{ title }}">
           </div>
           <div class="contentWrapper">
-            <h1 class="title">{{ name }}</h1>
+            <h1 class="title">{{ title }}</h1>
             <p class="description">{{ description }}</p>
-          </div>
-        </section>
-        <section class="characterComicsLinked">
-          <div >
-            <ComicsLinked :characterId="id"/>
+            <p class="price">{{ price }}€</p>
           </div>
         </section>
       </div>
       <div v-else>
-        <NoCharacter />
+        <NoComics />
       </div>
     </template>
     <template v-else>
@@ -29,57 +25,55 @@
 </template>
 
 <script>
-import NoCharacter from '@/components/NoCharacter.vue';
+import NoComics from '@/components/NoComic.vue';
 import Loading from '@/components/Loading.vue';
-import ComicsLinked from '@/components/ComicsLinked.vue';
 
 import api from '../api';
 
 const axios = require('axios');
 
 export default {
-  name: 'Character',
+  name: 'Comic',
   props: {
     id: String,
   },
   components: {
-    NoCharacter,
-    ComicsLinked,
+    NoComics,
     Loading,
   },
   data() {
     return {
       isLoading: false,
-      name: String,
+      title: String,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris',
       thumbnail: {
         extension: String,
         path: String,
       },
+      price: Number,
       comicsLinked: Object,
       isError: false,
     };
   },
   beforeMount() {
-    this.getCharacter(this.id);
+    this.getComic(this.id);
   },
   methods: {
-    async getCharacter(id) {
+    async getComic(id) {
       this.isLoading = true;
-      const apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/characters/${id}`);
+      const apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/comics/${id}`);
 
       axios({
         method: 'GET',
         url: apiUrl,
         headers: {},
       }).then((result) => {
-        console.log(result);
-        this.name = result.data.data.results[0].name;
-        this.thumbnail.extension = result.data.data.results[0].thumbnail.extension;
+        console.log(result.data.data.results[0]);
+        this.title = result.data.data.results[0].title;
+        this.description = result.data.data.results[0].description;
+        this.price = result.data.data.results[0].prices[0].price;
         this.thumbnail.path = result.data.data.results[0].thumbnail.path;
-        if (result.data.data.results[0].description !== '') {
-          this.description = result.data.data.results[0].description;
-        }
+        this.thumbnail.extension = result.data.data.results[0].thumbnail.extension;
         this.isLoading = false;
       }, (error) => {
         console.log('error');
@@ -97,10 +91,10 @@ export default {
 @import '@/assets/sass/_variables.scss';
 @import '@/assets/sass/_generic.scss';
 
-.characterSingle{
+.comicSingle{
   background-color: $purple;
 }
-.characterPresentation{
+.comicPresentation{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -109,6 +103,7 @@ export default {
     max-width: 50vw;
   }
   .contentWrapper{
+    position: relative;
     border: 3px solid $lightpurple;
     background-color: #161125;
     padding: 3em;
@@ -131,6 +126,15 @@ export default {
     }
     .description{
 
+    }
+    .price{
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: white;
+      padding: 10px;
+      color: black;
+      font-size: 20px;
     }
   }
 }
