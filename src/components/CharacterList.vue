@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ul class="wrapperCharacters">
+    <ul v-if="!isLoading" class="wrapperCharacters">
       <li v-for="character in characters" :key="character.id">
         <router-link class="nav-item" :to="{name:'Character', params: {id: character.id}}">
           <CharacterItem class="characterItem" :imgCharacter="character.thumbnail"
@@ -8,11 +8,15 @@
         </router-link>
       </li>
     </ul>
+    <template v-else>
+      <Loading />
+    </template>
   </div>
 </template>
 
 <script>
 import CharacterItem from '@/components/CharacterItem.vue';
+import Loading from '@/components/Loading.vue';
 import text50 from '@/mixins/index';
 import api from '../api';
 
@@ -22,6 +26,7 @@ export default {
   name: 'CharacterList',
   components: {
     CharacterItem,
+    Loading,
   },
   props: {
     limit: String,
@@ -29,6 +34,7 @@ export default {
   },
   data() {
     return {
+      isLoading: false,
       characters: [],
     };
   },
@@ -46,6 +52,7 @@ export default {
   mixins: [text50],
   methods: {
     async getCharacters(limit, searchInput) {
+      this.isLoading = true;
       let apiUrl = '';
       if (searchInput) {
         apiUrl = api.getUrlApi(`https://gateway.marvel.com/v1/public/characters?limit=${limit}&nameStartsWith=${searchInput}`, true);
@@ -54,6 +61,7 @@ export default {
       }
       const { data } = await axios.get(apiUrl);
       this.characters = data.data.results;
+      this.isLoading = false;
     },
   },
 };

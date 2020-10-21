@@ -1,7 +1,7 @@
 <template >
   <div class="section flex flex-col justify-center items-center">
     <h1 class="section-title">Perfectly Balanced,<span> as all things should be</span></h1>
-    <Button msg="discover" styleAppButton="primary"/>
+    <a href="#charaters" class="button"><Button msg="discover" styleAppButton="primary"/></a>
   </div>
 </template>
 
@@ -20,9 +20,16 @@ export default {
 @import '@/assets/sass/_variables.scss';
 @import '@/assets/sass/_mixins.scss';
 
+html{
+  scroll-behavior: smooth;
+}
 .section{
   min-height: 100vh;
   @include background('../assets/img/home-visuel.png');
+  .button{
+    display: block;
+    margin: 2em;
+  }
   .section-title{
     color: $white;
     text-transform: uppercase;

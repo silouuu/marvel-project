@@ -39,6 +39,7 @@ export default {
 .filters{
   width: 100%;
   max-width: 600px;
+  margin: auto;
   .filtersTitle {
     display: flex;
     align-content: flex-start;
