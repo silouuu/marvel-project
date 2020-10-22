@@ -6,11 +6,11 @@
     <section id="charaters" class="flex flex-col items-center">
       <h2 class="h2Primary">Personnages</h2>
       <CharacterFilters/>
-      <CharacterList limit=16 />
+      <CharacterList limit=14 />
     </section>
     <section id="comics" class="flex flex-col items-center">
       <h2 class="h2Primary">Comics</h2>
-      <ComicsList limit=16 />
+      <ComicsList limit=14 />
     </section>
   </div>
 </template>

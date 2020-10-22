@@ -43,7 +43,6 @@ export default {
   },
   watch: {
     search: {
-      immediate: true,
       handler(val) {
         this.getCharacters(this.limit, val);
       },
